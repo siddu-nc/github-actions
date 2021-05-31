@@ -1,4 +1,4 @@
-name: 'schedule publish my friend'
+name: 'schedule '
 'on':
   schedule:
     - cron: '4 * * * *'
