@@ -1,4 +1,4 @@
-name: 'schedule '
+name: 'schedule publish'
 'on':
   schedule:
     - cron: '4 * * * *'
@@ -16,3 +16,5 @@ jobs:
           node-version: '12.x'
       - name: 'Run Schedule Publish'
         run: 'node ./packages/studio/scripts/add.js'
+      - name: 'Remove the schedule yaml'
+        run: 'rm ./.github/workflows/schedule/undefined.yml'
