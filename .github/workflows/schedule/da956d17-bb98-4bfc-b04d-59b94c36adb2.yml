@@ -1,7 +1,7 @@
 name: 'schedule publish'
 'on':
   schedule:
-    - cron: '4 * * * *'
+    - cron: '30 5 2 6 3'
 jobs:
   publish:
     runs-on: 'ubuntu-latest'
@@ -9,12 +9,12 @@ jobs:
       - name: 'Checkout code'
         uses: 'actions/checkout@v1'
         with:
-          ref: 'master'
+          ref: 'qa'
       - name: 'Use Node.js 12.x'
         uses: 'actions/setup-node@v1'
         with:
           node-version: '12.x'
       - name: 'Run Schedule Publish'
-        run: 'node ./packages/studio/scripts/add.js'
+        run: 'yarn run schedulePublish'
       - name: 'Remove the schedule yaml'
-        run: 'rm ./.github/workflows/schedule/undefined.yml'
+        run: 'rm ./.github/workflows/schedule/da956d17-bb98-4bfc-b04d-59b94c36adb2.yml'
