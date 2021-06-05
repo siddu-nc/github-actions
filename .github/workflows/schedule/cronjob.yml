@@ -21,4 +21,4 @@ jobs:
         with:
           author_name: 'github-actions[bot]'
           author_email: 'github-actions[bot]@users.noreply.github.com'
-          remove: './github/workflow/schedule/cronjob.yml'
+          remove: './.github/workflow/schedule/cronjob.yml'
