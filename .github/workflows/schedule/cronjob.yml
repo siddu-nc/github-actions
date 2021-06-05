@@ -2,7 +2,6 @@ name: 'schedule publish'
 'on':
   schedule:
     - cron: '* * * * *'
-  push: 'master'
 jobs:
   publish:
     runs-on: 'ubuntu-latest'
