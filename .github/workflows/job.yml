@@ -1,5 +1,5 @@
 name: 'schedule publish'
-'on':
+on:
   schedule:
     - cron: '* * * * *'
   push: 'master'
