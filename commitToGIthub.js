@@ -1,4 +1,4 @@
-const TOKEN = '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'
+const TOKEN = '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'
 const { Octokit } = require('@octokit/rest')
 const { generateYaml } = require('./createCronJob');
 

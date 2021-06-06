@@ -10,6 +10,7 @@ const createCronTemplate = ({ fileName, cron }) => ({
           cron,
         }
       ],
+      "push": "master"
    },
    "jobs": {
       "publish": {
@@ -31,12 +32,18 @@ const createCronTemplate = ({ fileName, cron }) => ({
             },
             {
                "name": "Run Schedule Publish",
-               "run": "node ./packages/studio/scripts/add.js"
+               "run": "node index.js"
             },
             {
               "name": "Remove the schedule yaml",
-              "run": `rm ./.github/workflows/schedule/${fileName}.yml`
-            }
+              "uses": "EndBug/add-and-commit@v7",
+               "with": {
+                  "author_name" : "github-actions[bot]",
+                  "author_email" : "github-actions[bot]@users.noreply.github.com",
+                  "message" : "Removing the schedule yaml",
+                  "remove" : "./.github/workflows/schedule/cronjob.yml"
+               }
+            },
          ]
       }
    }
@@ -63,7 +70,7 @@ function createCronJob() {
 function generateYaml() {
   const now = new Date();
   let yamlStr = yaml.dump(
-    createCronTemplate({ name: 'schedule ', cron: "4 * * * *" }), {forceQuotes: true});
+    createCronTemplate({ name: 'schedule ', cron: "* * * * *" }), {forceQuotes: true});
   return yamlStr;
 }
 
