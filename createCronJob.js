@@ -9,8 +9,7 @@ const createCronTemplate = ({ fileName, cron }) => ({
         {
           cron,
         }
-      ],
-      "push": "master"
+      ]
    },
    "jobs": {
       "publish": {
@@ -70,7 +69,7 @@ function createCronJob() {
 function generateYaml() {
   const now = new Date();
   let yamlStr = yaml.dump(
-    createCronTemplate({ name: 'schedule ', cron: "* * * * *" }), {forceQuotes: true});
+    createCronTemplate({ name: 'schedule ', cron: "* * * * *" }), {noCompatMode: true});
   return yamlStr;
 }
 

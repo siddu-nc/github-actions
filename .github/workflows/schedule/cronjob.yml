@@ -1,0 +1,25 @@
+name: schedule publish
+on:
+  schedule:
+    - cron: '* * * * *'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+        with:
+          ref: master
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Run Schedule Publish
+        run: node index.js
+      - name: Remove the schedule yaml
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: github-actions[bot]
+          author_email: github-actions[bot]@users.noreply.github.com
+          message: Removing the schedule yaml
+          remove: ./.github/workflows/schedule/cronjob.yml

@@ -2,13 +2,14 @@ name: 'schedule publish'
 on:
   schedule:
     - cron: '* * * * *'
-  push: 'master'
+  push: 
+    branches: 'master'
 jobs:
   publish:
     runs-on: 'ubuntu-latest'
     steps:
       - name: 'Checkout code'
-        uses: 'actions/checkout@v1'
+        uses: 'actions/checkout@v2'
         with:
           ref: 'master'
       - name: 'Use Node.js 12.x'
@@ -24,3 +25,4 @@ jobs:
           author_email: 'github-actions[bot]@users.noreply.github.com'
           message: 'Removing the schedule yaml'
           remove: './.github/workflows/schedule/cronjob.yml'
+          branch: 'master'
