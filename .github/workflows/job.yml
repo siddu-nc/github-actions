@@ -1,7 +1,7 @@
 name: 'schedule publish'
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: 15 12 8 6 2
   push: 
     branches: 'master'
 jobs:
